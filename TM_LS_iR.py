@@ -776,13 +776,14 @@ if run_button:
         best_short, best_long = results["best_individual"]
         col_a, col_b = st.columns(2)
         with col_a:
-            st.metric("✨ MA kurz (optimal)", best_short)
+            st.metric("✨ MA kurz (optimal)", f"{best_short:.2f}")
         with col_b:
-            st.metric("✨ MA lang (optimal)", best_long)
+            st.metric("✨ MA lang (optimal)", f"{best_long:.2f}")
         
         # Fitness-Verlauf über die Generationen
         logbook = results["logbook"]
         df_log = pd.DataFrame(logbook)
+
         
         fig_opt, ax_opt = plt.subplots(figsize=(8, 4))
         ax_opt.plot(df_log["gen"], df_log["max"],    label="Max Sharpe", linewidth=2)
